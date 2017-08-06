@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Story title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_title" />
+    <TextView
+        android:text="Story section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_section" />
+    <TextView
+        android:text="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_date" />
+    <TextView
+        android:text="story author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_author" />
+
+</LinearLayout>
