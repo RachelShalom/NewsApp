@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="88dp"
+    android:paddingLeft="16sp"
+    android:paddingRight="16sp">
 
     <TextView
         android:text="Story title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:id="@+id/story_title" />
     <TextView
         android:text="Story section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="14sp"
         android:id="@+id/story_section" />
     <TextView
         android:text="date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="14sp"
         android:id="@+id/story_date" />
-    <TextView
-        android:text="story author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/story_author" />
 
 </LinearLayout>

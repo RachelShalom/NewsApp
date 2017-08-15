@@ -58,15 +58,13 @@ public class StoryAdapter extends ArrayAdapter<Story> {
         //display the section of the current story in that view
         SectionView.setText(currentStory.getSection());
 
-        //Find the TextView with the ID story_author
-        TextView AuthorView = (TextView) listItemView.findViewById(R.id.story_author);
-        //display the Author of the current story in that view
-        AuthorView.setText(currentStory.getAuthor());
         //Find the TextView with the ID story_date
 
         TextView DateView = (TextView) listItemView.findViewById(R.id.story_date);
+        String Current_date = currentStory.getDate();
+        String[] Short_date = Current_date.split("T");
         //dis[lay the date of the current story in that view
-        DateView.setText(currentStory.getDate());
+        DateView.setText(Short_date[0]);
 
         return listItemView;
     }

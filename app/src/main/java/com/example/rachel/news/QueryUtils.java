@@ -189,7 +189,7 @@ public class QueryUtils {
 
                 // Create a new {@link Story} object with the title section and date,
                 //  from the JSON response.
-                Story story = new Story(web_title, section_name, date, null, web_url);
+                Story story = new Story(web_title, section_name, date,web_url);
 
                 // Add the new {@link Story} to the list of stories
                 stories.add(story);

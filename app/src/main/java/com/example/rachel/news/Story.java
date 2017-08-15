@@ -15,9 +15,6 @@ public class Story {
     // date of the story
     private String mDate;
 
-    // name of the author of the story
-    private String mAuthor;
-
     // link-url of the story
     private String mLink;
 
@@ -27,15 +24,15 @@ public class Story {
  * @param title is the title of the story
  * @param section is to which section the story belong
  * @param date is when the story was published
- * @param author is the writer of the story
+
  * @param link is the website URL to read the complete story
   */
 
-    public Story(String title,String section,String date,String author,String link){
+    public Story(String title,String section,String date,String link){
         mTitle = title;
         mSection= section;
         mDate = date;
-        mAuthor = author;
+
         mLink = link;
     }
     /**
@@ -56,12 +53,7 @@ public class Story {
     public String getDate(){
         return mDate;
     }
-    /**
-     * Returns the author of the story
-     */
-    public String getAuthor(){
-        return mAuthor;
-    }
+
     /**
      * Returns the link to website of the story
      */
