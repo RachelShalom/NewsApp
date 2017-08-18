@@ -4,10 +4,12 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -26,10 +28,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Story>> {
     EditText searchEdit;
     String searchValue;
-    public static String defaultStoriesRequest;
-    public static String storiesRequest;
-
-
     private static final String LOG_TAG = MainActivity.class.getName();
     /**
      * Constant value for the story loader ID. We can choose any integer.
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        defaultStoriesRequest = "http://content.guardianapis.com/search?q=debates&api-key=1935bd38-513c-4b76-8f12-9aa2352800ce";
         ImageView SearchView = (ImageView) findViewById(R.id.search_image);
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         searchEdit = (EditText) findViewById(R.id.search_editor);
@@ -61,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 searchValue = searchEdit.getText().toString();
                 Log.e(LOG_TAG, "you typed" + searchValue);
                 if (searchValue.length() > 0) {
+                    //restart the loader to perform a network request after the user typed a search word
                     getLoaderManager().restartLoader(STORY_LOADER_ID, null, MainActivity.this);
                 } else {
                     Toast.makeText(MainActivity.this, "Please type your search", Toast.LENGTH_LONG).show();
@@ -127,11 +125,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<Story>> onCreateLoader(int id, Bundle args) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("https")
                 .authority("content.guardianapis.com")
                 .appendPath("search")
-                .appendQueryParameter("order-by", "newest")
+                .appendQueryParameter("order-by", orderBy)
                 .appendQueryParameter("q", searchValue)
                 .appendQueryParameter("api-key", "1935bd38-513c-4b76-8f12-9aa2352800ce");
         String myUrl = builder.build().toString();
